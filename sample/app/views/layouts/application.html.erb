@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+<%provide(:title,"|Ruby on Rails Tutorial") %>
   <head>
-    <title>Sample</title>
+    <title><%=yield(:title)%></title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
