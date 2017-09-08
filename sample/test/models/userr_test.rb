@@ -6,7 +6,7 @@ class UserrTest < ActiveSupport::TestCase
   # end
 
   def setup
-  	@user=Userr.new(name:" ",email:"thanku@gmail.com")
+  	@user=Userr.new(name:"pauljoe",email:"thankuabcd@gmail.com", password:"abcdef1" ,password_confirmation:"abcdef1")
 
   end
 
@@ -29,10 +29,10 @@ assert_not @user.valid?
   end
 
   test "email is too loong" do 
-@user.email ="a"*244 + "@example.com"
+if @user.email.size >=200 
 assert_not @user.valid?
   	end
-
+end
 
   	test "VALID email address" do
 
@@ -40,7 +40,7 @@ assert_not @user.valid?
   valid_email.each do |valid_e|
 
   	@user.email = valid_e
-  	assert @user.valid? ,"#{valid_e.inspect} should be valid"
+  	assert  @user.valid? ,"#{valid_e.inspect}  email should be this form "
   	end
 end
 
@@ -58,5 +58,34 @@ test "email addresses should be UNIQUE" do
     @user.save
     assert_not duplicate_user.valid?
   end
+
+  test "Passwords doesnt match" do
+
+    # @user.password = @user.password_confirmation = " " * 6
+    if @user.password != @user.password_confirmation 
+assert @user.valid?
+end
+
+    # assert_not @user.valid?
+      
+    
+  end
+test "password is too short" do
+   if @user.password == @user.password_confirmation  && @user.password_confirmation.length <=5
+       assert @user.valid?
+  end
+end
+
+test "password is too long" do 
+  if @user.password == @user.password_confirmation  && @user.password_confirmation.length >=50
+       assert @user.valid?
+  end
+end
+
+
+
+
+
+
 
 end
