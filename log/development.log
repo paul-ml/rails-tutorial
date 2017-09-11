@@ -3394,3 +3394,10 @@ Completed 200 OK in 78ms (Views: 73.1ms | ActiveRecord: 0.0ms)
 Completed 200 OK in 71ms (Views: 69.0ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2017-09-11 15:43:59 +0900
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 46ms (Views: 43.8ms | ActiveRecord: 0.0ms)
+
+
