@@ -2,13 +2,23 @@ class UsersController < ApplicationController
  
   def new
 
-  	@user=Userr.new
+  	@user=User.new
   end
 
   def show
 
-@user= Userr.find(params[:id])
+@user= User.find(params[:id])
 
   end
+
+  def create
+@user=User.new(params[:id])
+
+if @user.save 
+
+else
+	render 'new'
+  end
+
 
 end

@@ -1,12 +1,12 @@
 require 'test_helper'
 
-class UserrTest < ActiveSupport::TestCase
+class UserTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
 
   def setup
-  	@user=Userr.new(name:"pauljoe",email:"thankuabcd@gmail.com", password:"abcdef1" ,password_confirmation:"abcdef1")
+  	@user=User.new(name:"pauljoe",email:"thankuabcd@gmail.com", password:"abcdef1" ,password_confirmation:"abcdef1")
 
   end
 
