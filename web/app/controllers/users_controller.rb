@@ -10,6 +10,8 @@ def create
 @user=User.new(user_params)     #params[:user] - have entire details of user 
 if @user.save
 #Handle a successful save
+flash[:success]="W e l c o m e T o P J D e s g i n s ! !"
+redirect_to @user
 	else
 		render 'new'
 	end
