@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<%provide(:title,"Login")%>
+<head>
+
+<title><%=full_title(yield(:title))%> </title>
+</head>
+<body>
+</div>
+<div class="center jumbotron" class="body">
+<h1>PJDesigns </h1>
+<h2>U l t i m a t e   D e s i g n i n g   S o u l t i o n s</h2>
+</div>
+
+
+ <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(:session, url: login_path) do |f| %>
+
+
+
+      <%= f.label :email %>
+      <%= f.email_field :email , class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password , class: 'form-control'%>
+      <%= f.label :remember_me , class: "checkbox inline" do %>
+    <%= f.check_box :remember_me %>
+    <span>Remember me </span>
+    <% end %>
+      <%= f.submit "Login", class: "btn btn-primary" %>
+    <% end %>
+    <br>
+    <center>
+    <p> New User? <%= link_to "Register Now !" ,'/signup' %> </p>
+
+    <br><br><br><br></center>
+  </div>
+</div>
+</body>
+</html>
