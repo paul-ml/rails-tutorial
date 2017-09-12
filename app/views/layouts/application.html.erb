@@ -4,7 +4,7 @@
   <head>
     <title>
     <%=full_title(yield(:title))%>
-    	
+
     </title>
     <%= csrf_meta_tags %>
 
@@ -13,7 +13,7 @@
   </head>
 
   <body >
-   <header class="navbar  navbar-fixed-top navbar-inverse">  
+   <header class="navbar  navbar-fixed-top navbar-inverse">
         <div class="container ">
 <%= link_to "PJ DESIGNS", '#', id: "logo" %>
 
@@ -23,15 +23,34 @@
             <li><%= link_to "Help",   help_path %></li>
             <li><%= link_to "Contact", 'contact'%></li>
              <li><%= link_to "About", 'about'%></li>
-          </ul>
-        </nav>
-        </div>
+             <li><%= link_to "Settings", '#'%></li>
+             <% if logged_in? %>
+          <li><%= link_to "Users", '#' %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", '#' %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", logout_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Log in", login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
 
     </header>
     <div class="container">
     <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
+        <div class="alert alert-<%= message_type %>"> <%= message %> </div>
+<%end%>
       <%= yield %>
 
       <%= debug(params) if Rails.env.development? %>   <!--   this line ensures that debug information is not shown to users-->

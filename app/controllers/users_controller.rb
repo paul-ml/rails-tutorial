@@ -6,9 +6,10 @@ class UsersController < ApplicationController
   	@user= User.find(params[:id])
   end
 def create
- 
-@user=User.new(user_params)     #params[:user] - have entire details of user 
+
+@user=User.new(user_params)     #params[:user] - have entire details of user
 if @user.save
+	log_in @user
 #Handle a successful save
 flash[:success]="W e l c o m e T o P J D e s g i n s ! !"
 redirect_to @user
