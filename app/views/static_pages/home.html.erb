@@ -1,50 +1,86 @@
 <!DOCTYPE html />
-<%provide(:title,"Home") %>
+  <%provide(:title,"Home") %>
 
-<head>
-<title><%=full_title(yield(:title)) %></title>
-</head>
-<body  >
-<CENTER>
-<br><br><br>
+    <head>
+      <title><%=full_title(yield(:title)) %></title>
+    </head>
+    <body background="https://www.walldevil.com/wallpapers/a21/images-background-light-blue-opera-hours-performed-worked.jpg"  >
+      <CENTER>
+          <br><br><br>
+     <!-- If logged in ?? -->
+          <% if logged_in? %>
+
+             <div class="row">
+                 <aside class="col-md-5">
+                    <!-- Render user information-->
+                      <section class="user_info">
+                        <%= render 'shared/user_info' %>
+                      </section>
+                    <!-- Render number of followers and following-->
+                     <section class="stats">
+                       <%= render 'shared/stats' %>
+                    </section>
+                    <!-- Render users profile details , posts etc-->
+                    <section class="micropost_form">
+                       <%= render 'shared/micropost_form' %>
+                    </section>
+
+                  </aside>
+
+              <div class="col-md-7">
+                <h3>Posts</h3>
+                   <%= render 'shared/feed' %>
+              </div>
+          </div>
+                 <br><br><br><br><br><br><br><br><br><br>
+
+      <!--If NOT logged_in ? -->
+
+       <% else %>
+
+          </CENTER>
+             <div class="center jumbotron ">
+
+                <h1> WELCOME HOME  </h1>
+                <p>Perfect Designing Solutions Partner
+                <br>
+
+                <%= link_to "Sign In", '/login', class: "btn btn-primary btn-lg"%>
+                <%= link_to "Sign Up", '/signup', class: "btn btn-primary btn-lg" %>
+
+            </div >
+
+            <div class="center">
+            <%= link_to image_tag("pjdesigns.png", alt: "PJ Logo"),
+                        'http://pjdesigns.co.uk/images/logo.png' %>
+
+            <%= link_to image_tag("kitty.png", alt: "Kitty Image"),
+                       'https://s3-us-west-2.amazonaws.com/learnenough/kitten.jpg' %>
+              </div>
+
+        <% end %>
+
+   <!-- Footer for the homepage-->
+        <footer class="footer" >
+
+           <small>
+
+             The <a href="http://www.PJDesigns.org/">PJ Designs</a>
+              by <a href="http://PJDesigns.co.in/">Paul Joe George</a>
+          
+           </small>
+
+           <nav>
+             <ul>
+                <li><%= link_to "About",   'about' %></li>
+                <li><%= link_to "Contact", 'contact' %></li>
+                <li><a href="http://PJDesigns.org">News</a></li>
+             </ul>
+          </nav>
+
+      </footer>
 
 
+       </body>
 
-</CENTER>
-<div class="center jumbotron ">
-
-<h1> WELCOME HOME  </h1>
-
-<p>Perfect Designing Solutions Partner
-<br>
-
-           <%= link_to "Sign In", '/login', class: "btn btn-primary btn-lg"%>
-           <%= link_to "Sign Up", '/signup', class: "btn btn-primary btn-lg" %>
-
-</div >
-<div class="center">
-<%= link_to image_tag("pjdesigns.png", alt: "PJ Logo"),
-            'http://pjdesigns.co.uk/images/logo.png' %>
-
-<%= link_to image_tag("kitty.png", alt: "Kitty Image"),
-           'https://s3-us-west-2.amazonaws.com/learnenough/kitten.jpg' %>
-  <div>
-
-
-<footer class="footer" >
-  <small>
-    The <a href="http://www.PJDesigns.org/">PJ Designs</a>
-    by <a href="http://PJDesigns.co.in/">Paul Joe George</a>
-  </small>
-  <nav>
-    <ul>
-      <li><%= link_to "About",   'about' %></li>
-      <li><%= link_to "Contact", 'contact' %></li>
-      <li><a href="http://PJDesigns.org">News</a></li>
-    </ul>
-  </nav>
-</footer>
-
-
-</body>
-</html>
+    </html>
