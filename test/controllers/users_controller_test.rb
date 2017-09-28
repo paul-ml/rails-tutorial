@@ -37,11 +37,10 @@ test "should redirect update when not logged in" do
   end
 
   test "should redirect update when log_in_as another user" do
-log_in_as(@other_user)
-patch user_path(@user) , params: {user: {name: @user.name , email: @user.email}}
-assert flash.empty?
-assert_redirected_to root_path 
+    log_in_as(@other_user)
+    patch user_path(@user) , params: {user: {name: @user.name , email: @user.email}}
 
+    assert_redirected_to root_path 
   end
 
   test "should redirect edit when log_in_as another user" do
