@@ -1,3 +1,8 @@
+#user_test.rb - This is a testing done for each users features.. 
+#like each user will have a unique name , email password etc.. 
+#those things will be tested here.
+
+
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
@@ -12,6 +17,7 @@ class UserTest < ActiveSupport::TestCase
   test "VALID USER" do
   	assert @user.valid?
   end
+  #for invalidation --> use assert_not 
   test "NOT VALID" do
 @user.name ="  "
 assert_not @user.valid?

@@ -1,10 +1,6 @@
 module SessionsHelper
 
 
-
-
-
-
 	# logs in the given user
 
 	def log_in(user)
@@ -17,7 +13,7 @@ module SessionsHelper
 if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
     elsif (user_id = cookies.signed[:user_id])
-         # The tests still pass, so this branch is currently untested.
+     raise    # The tests still pass, so this branch is currently untested.
       user = User.find_by(id: user_id)
     # if user && user.authenticated?(cookies[:remember_token])     # it checks whether token stored in cookies is same as token in cookies--
        #if user && user.authenticated?(:remember, cookies[:remember_token])  # remember - as 2arguments has to specified based  on the method
@@ -32,6 +28,8 @@ if (user_id = session[:user_id])
 		def logged_in?
 			!current_user.nil?     #returns true if the user is logged-in
 		end
+
+
 
 
 def signed_in?

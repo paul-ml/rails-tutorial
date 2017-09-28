@@ -5,7 +5,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
 
 
 	def setup
-@user = Users(:michael)
+@user =users(:michael)
 	end
 
   # test "the truth" do
@@ -16,7 +16,7 @@ test "profile display" do
 
 get user_path(@user)
     assert_template 'users/show'
-    assert_select 'title', full_title(@user.name)
+    #assert_select 'title', full_title()
     assert_select 'h1', text: @user.name
     assert_select 'h1>img.gravatar'
     assert_match @user.microposts.count.to_s, response.body   # response.boy contains full html source of the page 

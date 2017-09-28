@@ -19,8 +19,12 @@
 
           <nav>
             <ul class="nav navbar-nav navbar-right">
-
-               <li><%= link_to "Home",   root_path %></li>
+              <li>
+                <%= link_to root_path do %>
+                <%= content_tag(:i , "Home" ,:class => 'glyphicon glyphicon-log-in') %>
+                <%end %>
+              </li>
+              <li><%= link_to "Home",   root_path %></li>
               <li><%= link_to "Help",   help_path %></li>
               <li><%= link_to "Contact", contact_path%></li>
               <li><%= link_to "About", about_path%></li>
