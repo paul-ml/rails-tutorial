@@ -32,7 +32,8 @@ class UsersController < ApplicationController
         #flash[:success]="W e l c o m e T o P J D e s g i n s ! !"
         #redirect_to @user    
   	   else
-  		  render 'new'
+  		 render 'new'
+
   	end
   end
 
@@ -55,6 +56,7 @@ class UsersController < ApplicationController
             redirect_to @user
           else
             render 'edit'
+           
           end
       end
 
