@@ -1,2 +1,4 @@
 $("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>");
 $("#followers").html('<%= @user.followers.count %>');
+
+$("#like-buttons").html("<%= j(render partial: 'like', locals: { micropost: micropost, likes: @likes, like: @like}) %>");

@@ -45,6 +45,7 @@ class UsersController < ApplicationController
     def show
       @user= User.find(params[:id])
       @microposts = @user.microposts.paginate(page: params[:page])  # for displaying the microposts for each user in teh display page 
+      @likes = Like.where(micropost_id: params[:micropost_id])
       redirect_to root_url and return unless true
     end
 

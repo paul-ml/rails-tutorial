@@ -6,10 +6,20 @@
 <span class="content"><%= micropost.content %> </span>
 
 <%= image_tag micropost.picture.url if micropost.picture? %>
-  <span class="timestamp">Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+  
+  <%= render partial: 'likes/like', locals: {micropost: micropost , likes: @likes} %>
+
     <% if current_user?(micropost.user) %>
+    <!-- Like -->
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  
       <%= link_to "delete", micropost, method: :delete,
                                        data: { confirm: "You sure?" } %>
+ 
     <% end %>
-  </span>
+  
+    <span class="timestamp">Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+
+  
+
 </li>
